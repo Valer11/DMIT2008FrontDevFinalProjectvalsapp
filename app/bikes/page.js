@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { PageHeader } from "../../components/header/PageHeader";
-import { getEmployees } from "@/lib/firebase/getEmployees";
+import { getBikes } from "@/lib/firebase/getBike";
 
 // Link element to create a dynamic route.
 function Card({
@@ -33,7 +33,7 @@ function Card({
 
             <Link
               className="text-gray-600 font-semibold"
-              href={`/employee/${uid}`}
+              href={`/bike/${uid}`}
             >
               {" "}
               Product ID: {uid}
@@ -49,8 +49,8 @@ function Card({
   );
 }
 
-async function EmployeesPage() {
-  const payload = await getEmployees();
+async function BikesPage() {
+  const payload = await getBikes();
   const keys = Object.keys(payload);
   const values = Object.values(payload);
   const entries = Object.entries(payload);
@@ -80,4 +80,4 @@ async function EmployeesPage() {
   );
 }
 
-export default EmployeesPage;
+export default BikesPage;

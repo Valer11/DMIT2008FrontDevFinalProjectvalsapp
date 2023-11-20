@@ -14,7 +14,7 @@ function NavBar({ children }) {
           </Link>
         </li>
         <li>
-          <Link className="text-blue-600 font-medium" href="/employees">
+          <Link className="text-blue-600 font-medium" href="/bikes">
             Products
           </Link>
         </li>
