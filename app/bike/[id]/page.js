@@ -26,7 +26,7 @@ export default async function BikePage({ params }) {
   // Render the UI for the single bike page
   return (
     <>
-      <PageHeader title={`Bike: ${bikeData.productName}`} />
+      <PageHeader title={`Bike: ${bikeData.productName}`} tagline="example of displaying a single bike"/>
       <main className="min-h-screen py-24">
         <div className="max-w-screen-lg m-auto">
           {/* Display individual bike data */}

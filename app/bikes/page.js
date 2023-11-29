@@ -39,6 +39,11 @@ function Card({
             <h2 className="text-gray-600 font-semibold">
               Product Description: {shortDescription}
             </h2>
+
+            <Link href={`/bike/[id]`} as={`/bike/${uid}`}>
+            <h2 className="text-gray-600 font-semibold">
+              View Details</h2>
+            </Link>
           </div>
         </aside>
       </div>
