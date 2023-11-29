@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import { PageHeader } from "../../components/header/PageHeader";
-import { getBikes } from "@/lib/firebase/getBike";
+import { PageHeader } from "@/components/header/PageHeader";
+import { getBikes } from "@/lib/firebase/getBikes";
 
 // Link element to create a dynamic route.
 function Card({
@@ -31,12 +31,9 @@ function Card({
               Product Price: {productPrice}
             </h2>
 
-            <Link
-              className="text-gray-600 font-semibold"
-              href={`/bike/${uid}`}
-            >
-              {" "}
-              Product ID: {uid}
+            <Link href={`/bike/[id]`} as={`/bike/${uid}`}>
+            <h2 className="text-gray-600 font-semibold">
+              Bike ID: {uid}</h2>
             </Link>
 
             <h2 className="text-gray-600 font-semibold">
