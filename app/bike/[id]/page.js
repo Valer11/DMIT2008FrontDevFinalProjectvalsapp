@@ -1,6 +1,7 @@
 import { getBikes } from "@/lib/firebase/getBikes";
 import { PageHeader } from "@/components/header/PageHeader";
 import Image from "next/image";
+import { BuyNow } from "@/components/buynow/BuyNowForm"; // Import the BuyNow component
 
 // Function to fetch a single bike based on ID
 async function getBike(id) {
@@ -26,7 +27,10 @@ export default async function BikePage({ params }) {
   // Render the UI for the single bike page
   return (
     <>
-      <PageHeader title={`Bike: ${bikeData.productName}`} tagline="example of displaying a single bike"/>
+      <PageHeader
+        title={`Bike: ${bikeData.productName}`}
+        tagline="example of displaying a single bike"
+      />
       <main className="min-h-screen py-24">
         <div className="max-w-screen-lg m-auto">
           {/* Display individual bike data */}
@@ -50,6 +54,13 @@ export default async function BikePage({ params }) {
                   Bike Description: {bikeData.shortDescription}
                 </h2>
                 {/* Add other bike details as needed */}
+
+                {/* Conditionally render the Buy Now button */}
+                {bikeData.productId && (
+                  <BuyNow id={id} price={bikeData.productPrice} quantity={1}>
+                    Buy Now
+                  </BuyNow>
+                )}
               </div>
             </aside>
           </div>
