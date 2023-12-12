@@ -56,11 +56,13 @@ export default async function BikePage({ params }) {
                 {/* Add other bike details as needed */}
 
                 {/* Conditionally render the Buy Now button */}
-                {bikeData.productId && (
+                <h2 className="text-gray-600 font-semibold">
+                {bikeData.priceId && (
                   <BuyNow id={id} price={bikeData.productPrice} quantity={1}>
                     Buy Now
                   </BuyNow>
                 )}
+                </h2>
               </div>
             </aside>
           </div>
