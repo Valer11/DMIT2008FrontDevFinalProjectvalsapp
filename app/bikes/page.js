@@ -32,8 +32,7 @@ function Card({
             </h2>
 
             <Link href={`/bike/[id]`} as={`/bike/${uid}`}>
-            <h2 className="text-gray-600 font-semibold">
-              Bike ID: {uid}</h2>
+              <h2 className="text-gray-600 font-semibold">Bike ID: {uid}</h2>
             </Link>
 
             <h2 className="text-gray-600 font-semibold">
@@ -41,8 +40,7 @@ function Card({
             </h2>
 
             <Link href={`/bike/[id]`} as={`/bike/${uid}`}>
-            <h2 className="text-gray-600 font-semibold">
-              View Details</h2>
+              <h2 className="text-gray-600 font-semibold">View Details</h2>
             </Link>
           </div>
         </aside>

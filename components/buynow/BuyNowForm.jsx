@@ -1,4 +1,3 @@
-
 function BuyNow({ priceId }) {
   return (
     <form action="/api/checkout" method="POST">
