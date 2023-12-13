@@ -1,9 +1,8 @@
 import { getBikes } from "@/lib/firebase/getBikes";
 import { PageHeader } from "@/components/header/PageHeader";
 import Image from "next/image";
-import { BuyNow } from "@/components/buynow/BuyNowForm"; // Import the BuyNow component
+import { BuyNow } from "@/components/buynow/BuyNowForm";  // Import the BuyNow component
 
-// Function to fetch a single bike based on ID
 async function getBike(id) {
   const payload = await getBikes();
   const bikes = Object.values(payload);
@@ -12,19 +11,14 @@ async function getBike(id) {
   return singleBike;
 }
 
-// Page component for the single bike
 export default async function BikePage({ params }) {
   const { id } = params;
-
-  // Fetch data for the single bike
   const bikeData = await getBike(id);
 
-  // Check if the bikeData exists
   if (!bikeData) {
     return <p>Bike not found</p>;
   }
 
-  // Render the UI for the single bike page
   return (
     <>
       <PageHeader
@@ -33,7 +27,6 @@ export default async function BikePage({ params }) {
       />
       <main className="min-h-screen py-24">
         <div className="max-w-screen-lg m-auto">
-          {/* Display individual bike data */}
           <div className="ml-44 mb-10">
             <aside className="md:flex bg-slate-100">
               <Image
@@ -53,16 +46,11 @@ export default async function BikePage({ params }) {
                 <h2 className="text-gray-600 font-semibold">
                   Bike Description: {bikeData.shortDescription}
                 </h2>
-                {/* Add other bike details as needed */}
-
-                {/* Conditionally render the Buy Now button */}
-                <h2 className="text-gray-600 font-semibold">
                 {bikeData.priceId && (
-                  <BuyNow id={id} price={bikeData.productPrice} quantity={1}>
+                  <BuyNow priceId={bikeData.priceId}>
                     Buy Now
                   </BuyNow>
                 )}
-                </h2>
               </div>
             </aside>
           </div>

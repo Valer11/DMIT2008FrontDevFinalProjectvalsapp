@@ -1,23 +1,16 @@
-// components/buynow/BuyNowForm.jsx
 
-function BuyNow({ children, id, price, quantity }) {
-  const details = {
-    id: id,
-    quantity: quantity,
-    price: price,
-  };
-
+function BuyNow({ priceId }) {
   return (
     <form action="/api/checkout" method="POST">
-      <input type="hidden" name="id" value={details.id} />
-      {/* ADD THE PRICE ID TO THE HIDDEN FIELD */}
-      <input type="hidden" name="price" value={details.price} />
+      <input type="hidden" name="id" value="from_dashboard" />
+      {/* Use the priceId from props */}
+      <input type="hidden" name="price" value={priceId} />
       <button
-        className="text-white font-semibold h-9 bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300 rounded-md px-4"
         type="submit"
-        id="checkout-button"
+        value="submit"
+        className="w-2/5 text-xl font-bold rounded-md bg-white/5 hover:bg-white/20 py-2.5 text-white ring-4 ring-white/5 ring-offset-2 ring-offset-white/[0.09]"
       >
-        {children}
+        Buy Now
       </button>
     </form>
   );
