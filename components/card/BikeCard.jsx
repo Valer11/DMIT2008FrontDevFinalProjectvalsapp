@@ -1,9 +1,9 @@
 function BikeCard({ children }) {
   return (
-    <>
-      <p> BikeCard Component</p>
+    <div className="bg-gray-200 p-4 rounded-md">
+      <p className="text-lg font-bold mb-2">BikeCard Component</p>
       {children}
-    </>
+    </div>
   );
 }
 

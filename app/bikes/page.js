@@ -3,7 +3,6 @@ import Image from "next/image";
 import { PageHeader } from "@/components/header/PageHeader";
 import { getBikes } from "@/lib/firebase/getBikes";
 
-// Link element to create a dynamic route.
 function Card({
   uid,
   productName,
@@ -12,38 +11,38 @@ function Card({
   productPrice,
 }) {
   return (
-    <div className="max-w-screen-lg">
-      <div className="ml-44 mb-10">
-        <aside className="md:flex bg-slate-100">
+    <div className="max-w-screen-lg bg-white shadow-lg rounded-md p-4 mx-auto mb-8">
+      <div className="md:flex md:items-center">
+        <div className="md:w-1/2 md:mr-6">
           <Image
             src={`/${productImage}`}
-            width={380}
-            height={380}
+            width={150}
+            height={150}
             alt={productName}
+            className="object-cover w-full h-full rounded-md"
           />
+        </div>
 
-          <div className="pt-6 md:p-8 text-center md:text-left space-y-4">
-            <h2 className="text-gray-600 font-semibold ">
-              Product Name: {productName}
-            </h2>
+        <div className="md:w-1/2 mt-6 md:mt-0">
+          <h2 className="text-indigo-800 font-semibold text-lg mb-2">
+            {productName}
+          </h2>
 
-            <h2 className="text-gray-600 font-semibold">
-              Product Price: {productPrice}
-            </h2>
+          <h2 className="text-gray-600 font-semibold mb-2">Bike ID: {uid}</h2>
 
-            <Link href={`/bike/[id]`} as={`/bike/${uid}`}>
-              <h2 className="text-gray-600 font-semibold">Bike ID: {uid}</h2>
-            </Link>
+          <p className="text-gray-600 mb-2">{shortDescription}</p>
 
-            <h2 className="text-gray-600 font-semibold">
-              Product Description: {shortDescription}
-            </h2>
-
-            <Link href={`/bike/[id]`} as={`/bike/${uid}`}>
-              <h2 className="text-gray-600 font-semibold">View Details</h2>
-            </Link>
+          <div className="flex items-center mb-2">
+            <span className="text-gray-700 font-semibold mr-2">Price:</span>
+            <span className="text-green-600 font-bold">${productPrice}</span>
           </div>
-        </aside>
+
+          <Link href={`/bike/[id]`} as={`/bike/${uid}`}>
+            <h2 className="text-blue-500 hover:underline cursor-pointer">
+              View Details
+            </h2>
+          </Link>
+        </div>
       </div>
     </div>
   );
@@ -51,30 +50,20 @@ function Card({
 
 async function BikesPage() {
   const payload = await getBikes();
-  const keys = Object.keys(payload);
   const values = Object.values(payload);
-  const entries = Object.entries(payload);
-  const dataLoading = true;
-
-  //  conditional rendering data loading
-  // if(dataLoading) {
-  //   return  null
-  // }
-
-  // if(!dataLoading) {
-  //   return <p>You have the data</p>
-  // }
 
   return (
     <>
       <PageHeader
         title="All Bikes Display"
-        tagline="example of displaying all items in database"
+        tagline="Example of displaying all items in the database"
       />
-      <main className=" min-h-screen py-24">
-        {values.map((item) => (
-          <Card key={item.uid} {...item} />
-        ))}
+      <main className="min-h-screen py-24 bg-gray-200">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-8">
+          {values.map((item) => (
+            <Card key={item.uid} {...item} />
+          ))}
+        </div>
       </main>
     </>
   );
